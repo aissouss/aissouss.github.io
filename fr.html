@@ -95,6 +95,26 @@ p.small{font-size:14px;color:#3E3842}
 .minor{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:22px}
 .minor .card{box-shadow:6px 6px 0 var(--pink);padding:24px 26px}
 
+
+/* featured */
+.feat{display:grid;grid-template-columns:420px 1fr;gap:48px;align-items:start;margin-top:56px}
+.flow{display:flex;flex-direction:column;align-items:stretch;gap:0}
+.node{border:1.6px solid var(--dark);border-radius:12px;background:#FFF8F3;padding:10px 14px;font-weight:600;font-size:14px;text-align:center;box-shadow:3px 3px 0 var(--pink)}
+.node small{display:block;font-weight:400;font-size:12px;color:var(--muted)}
+.n-user{background:var(--pink-l)}
+.n-agent{background:#E9D7F1;box-shadow:3px 3px 0 var(--purple)}
+.n-tool{background:#FFF8F3}
+.n-api{background:var(--dark);color:#fff;box-shadow:3px 3px 0 var(--purple)}
+.pair{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.arr{text-align:center;font-size:16px;line-height:22px;color:var(--purple-d)}
+.feat-text{border:1.6px solid var(--dark);border-radius:18px;background:#FFF8F3;padding:30px 32px;box-shadow:6px 6px 0 var(--purple)}
+.feat-text h3{font-size:34px}
+.feat-text p{font-size:15px;color:#3E3842;margin-top:12px}
+.feat-text ul{padding-left:18px;margin-top:12px}
+.feat-text li{font-size:15px;color:#3E3842;margin-bottom:10px}
+.feat-text li b{font-weight:600;color:var(--ink)}
+.feat-text .note{font-size:13px;color:var(--muted);border-top:1px dashed var(--line);padding-top:12px;margin-top:16px}
+
 /* projects */
 .projects{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:64px}
 .proj{border:1.6px solid var(--dark);border-radius:20px;background:#FFF8F3;overflow:hidden;display:flex;flex-direction:column;transition:transform .25s,box-shadow .25s;box-shadow:6px 6px 0 var(--pink)}
@@ -143,7 +163,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
 
 @media (max-width:900px){
   nav{display:none}
-  .split,.exp,.skills,.projects,.edu,.minor{grid-template-columns:1fr}
+  .split,.exp,.skills,.projects,.edu,.minor,.feat{grid-template-columns:1fr}
   .hero .ill,.contact .ill{justify-self:center;max-width:380px}
   .exp .ill,.about .ill{max-width:240px;margin:0 auto}
   .page{padding:64px 0 90px}
@@ -202,6 +222,34 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
     <div class="card rise"><h3>Cours particuliers de maths</h3><div class="meta">Freelance · 2020 à 2022</div><p class="small">Élèves de lycée, avec des explications adaptées au niveau de chacun.</p></div>
   </div>
 </div><span class="page-no">Page 03</span></section>
+<section class="page" id="scalterminal"><div class="wrap">
+  <h2 class="center rise"><span class="b">Projet</span> <span class="l">phare</span></h2>
+  <p class="sub rise">ScalTerminal, mon projet de stage de fin d'études chez Scalnyx. Le code est privé, alors voici comment il fonctionne.</p>
+  <div class="feat rise">
+    <div class="flow" aria-label="Architecture de ScalTerminal">
+      <div class="node n-user">Expert métier</div><div class="arr">↓</div>
+      <div class="node">Interface CLI et Streamlit <small>français / anglais</small></div><div class="arr">↓</div>
+      <div class="node">Routeur local <small>commandes simples traitées sans le LLM</small></div><div class="arr">↓</div>
+      <div class="node n-agent">Agent IA (Claude) <small>agent ReAct, ou superviseur avec 3 sous-agents</small></div><div class="arr">↓</div>
+      <div class="pair"><div class="node n-tool">2 outils fixes <small>datasets, modèles</small></div><div class="node n-tool">Outils générés depuis la spec OpenAPI <small>un par module d'analyse</small></div></div><div class="arr">↓</div>
+      <div class="node">Client HTTP <small>requêtes et suivi des traitements longs</small></div><div class="arr">↓</div>
+      <div class="node n-api">API d'analyse causale</div>
+    </div>
+    <div class="feat-text">
+      <h3>ScalTerminal <span class="pill-x">Mention Excellent</span></h3>
+      <div class="meta">Python · LangChain · LangGraph · Claude · Streamlit · pytest</div>
+      <p>Un agent IA qui permet à des experts métiers d'utiliser une plateforme d'analyse causale en posant leurs questions en langage naturel, au lieu d'appeler son API à la main.</p>
+      <ul>
+        <li><b>Outils qui se mettent à jour seuls :</b> au démarrage, l'agent lit la spécification OpenAPI de l'API et crée un outil par module d'analyse. Si un module est ajouté à l'API, l'agent le prend en compte sans modifier le code.</li>
+        <li><b>Deux architectures :</b> un agent ReAct unique, et un superviseur avec trois sous-agents spécialisés (données, découverte, analyse). Les deux partagent les mêmes outils, le même client et la même mémoire, et se changent à la volée.</li>
+        <li><b>Évaluation :</b> un benchmark de 30 questions pour comparer les deux architectures en précision, latence et coût, avec une méthode de notation documentée.</li>
+        <li><b>Au quotidien :</b> mémoire de conversation, commandes locales, interfaces en français et en anglais, tests automatisés et documentation technique.</li>
+      </ul>
+      <p class="note">Projet de stage pour Scalnyx. Le code source et les données ne sont pas publics.</p>
+    </div>
+  </div>
+</div><span class="page-no">Page 04</span></section>
+
 
 <section class="page" id="projects"><div class="wrap">
   <h2 class="center rise"><span class="b">Mes</span> <span class="l">projets</span></h2>
@@ -221,7 +269,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
       <div class="foot"><div class="tags"><span class="tag">Java</span><span class="tag">JDBC</span><span class="tag">MySQL</span></div><a class="code" href="https://github.com/aissouss/minishop-jee" target="_blank" rel="noopener">Voir le code ↗</a></div></div></article>
   </div>
   <p class="more rise">D'autres projets universitaires sur <a href="https://github.com/aissouss?tab=repositories" target="_blank" rel="noopener">GitHub</a>.</p>
-</div><span class="page-no">Page 04</span></section>
+</div><span class="page-no">Page 05</span></section>
 
 <section class="page" id="skills"><div class="wrap">
   <h2 class="center rise"><span class="b">Compé</span><span class="l">tences</span></h2>
@@ -241,7 +289,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
     <div class="card rise"><span class="when">2022 à 2023</span><h3>PASS, première année d'études de santé</h3><p class="small">Université Paris Cité</p></div>
     <div class="card rise"><span class="when">2022</span><h3>Baccalauréat, Maths et Physique-Chimie</h3><p class="small">CNED · option Maths expertes</p></div>
   </div>
-</div><span class="page-no">Page 05</span></section>
+</div><span class="page-no">Page 06</span></section>
 
 <section class="page contact" id="contact"><div class="wrap split">
   <div class="rise">
@@ -251,7 +299,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
     <div class="btns"><a class="btn fill" href="https://www.linkedin.com/in/aissya-boukraa" target="_blank" rel="noopener">LinkedIn</a><a class="btn" href="https://github.com/aissouss" target="_blank" rel="noopener">GitHub</a><a class="btn" href="Aissya_Boukraa_CV.pdf" target="_blank" rel="noopener">CV</a></div>
   </div>
   <div class="ill float rise"><svg xmlns="http://www.w3.org/2000/svg" viewBox="-99 -24 240 161" role="img" aria-hidden="true"><polygon points="129.9,75.0 43.3,125.0 43.3,113.0 129.9,63.0" fill="#9161AE" stroke="#1E1B22" stroke-width="2.2" stroke-linejoin="round"/><polygon points="-86.6,50.0 43.3,125.0 43.3,113.0 -86.6,38.0" fill="#B583CB" stroke="#1E1B22" stroke-width="2.2" stroke-linejoin="round"/><polygon points="0.0,-12.0 129.9,63.0 43.3,113.0 -86.6,38.0" fill="#D3B0E3" stroke="#1E1B22" stroke-width="2.2" stroke-linejoin="round"/><polygon points="0.0,-12.0 21.7,50.5 129.9,63.0" fill="#D3B0E3" stroke="#1E1B22" stroke-width="1.8" stroke-linejoin="round"/><polygon points="-86.6,38.0 21.7,50.5 43.3,113.0" fill="#B583CB" stroke="#1E1B22" stroke-width="1.8" stroke-linejoin="round"/><path d="M4.5,46.5 L4.5,50.5 A17.1,9.9 0 0 0 38.8,50.5 L38.8,46.5 Z" fill="#F2B6BB" stroke="#1E1B22" stroke-width="2.2" stroke-linejoin="round"/><ellipse cx="21.7" cy="46.5" rx="17.1" ry="9.9" fill="#F9D3D5" stroke="#1E1B22" stroke-width="2.2"/></svg></div>
-</div><span class="page-no">Page 06</span></section>
+</div><span class="page-no">Page 07</span></section>
 </main>
 <footer><div class="wrap"><span>© 2026 Aissya Boukraa</span><a href="#top">Haut de page ↑</a></div></footer>
 <script>
